@@ -2,7 +2,7 @@
 
 Personal NixOS configuration for my icecrown laptop, managed as a flake.
 
-##Usage
+## Usage
 
 Build and switch to this configuration:
 
