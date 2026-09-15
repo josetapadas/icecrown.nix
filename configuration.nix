@@ -23,7 +23,28 @@
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
   # Enable networking
-  networking.networkmanager.enable = true;
+  networking.networkmanager = {
+    enable = true;
+    dns = "systemd-resolved";
+  };
+
+  services.resolved = {
+    enable = true;
+
+    settings.Resolve = {
+      DNS = [
+        "1.1.1.1"
+        "1.0.0.1"
+      ];
+
+      FallbackDNS = [
+        "9.9.9.9"
+        "149.112.112.112"
+      ];
+
+      DNSSEC = "allow-downgrade";
+    };
+  };
 
   # Set your time zone.
   time.timeZone = "Europe/Lisbon";
