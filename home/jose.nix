@@ -31,7 +31,7 @@
     settings = {
       user = {
         name = "jose tapadas alves";
-	email = "jose.tapadas@gmail.com";
+        email = "jose.tapadas@gmail.com";
         signingkey = "/home/jose/.ssh/id_ed25519.pub";
       };
 
@@ -54,7 +54,32 @@
     };
   };
 
+  programs.pi-coding-agent = {
+    enable = true;
+
+    extraPackages = with pkgs; [
+      git
+      gh
+      jq
+      ripgrep
+      fd
+      tree
+
+      nix
+      nixd
+      nixfmt-rfc-style
+      statix
+      deadnix
+    ];
+  };
+
   home.packages = with pkgs; [
+    # AI coding agents and their terminal runtime.
+    herdr
+    github-copilot-cli
+    claude-code
+
+    # Terminal and desktop utilities.
     kitty
     foot
     fuzzel
@@ -62,15 +87,22 @@
     grim
     slurp
     libnotify
+
+    # General development and repository tools.
     git
+    gh
     lazygit
     openssh
+    jq
     ripgrep
     fd
-    jq
     tree
+
+    # Nix development, formatting, and static analysis.
     nixd
-    nixfmt
+    nixfmt-rfc-style
+    statix
+    deadnix
   ];
 
   home.pointerCursor = {
@@ -293,4 +325,3 @@
     systemd.enable = true;
   };
 }
-

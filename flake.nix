@@ -19,14 +19,15 @@
     };
   };
 
-  outputs = inputs@{
-    self,
-    nixpkgs,
-    home-manager,
-    nixos-hardware,
-    noctalia,
-    ...
-  }:
+  outputs =
+    inputs@{
+      self,
+      nixpkgs,
+      home-manager,
+      nixos-hardware,
+      noctalia,
+      ...
+    }:
     {
       nixosConfigurations.icecrown = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
@@ -46,7 +47,7 @@
             home-manager.extraSpecialArgs = {
               inherit inputs;
             };
-            
+
             home-manager.sharedModules = [
               inputs.nixvim.homeModules.nixvim
             ];

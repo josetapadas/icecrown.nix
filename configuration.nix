@@ -5,11 +5,10 @@
 { config, pkgs, ... }:
 
 {
-  imports =
-    [
-      ./hardware-configuration.nix
-      ./modules/desktop/hyprland.nix
-    ];
+  imports = [
+    ./hardware-configuration.nix
+    ./modules/desktop/hyprland.nix
+  ];
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
@@ -99,9 +98,12 @@
   users.users."jose" = {
     isNormalUser = true;
     description = "jose tapadas alves";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+    ];
     packages = with pkgs; [
-    #  thunderbird
+      #  thunderbird
     ];
   };
 
@@ -171,9 +173,12 @@
   # For more information, see `man configuration.nix` or https://nixos.org/manual/nixos/stable/options#opt-system.stateVersion .
   system.stateVersion = "26.05"; # Did you read the comment?
 
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
 
   fonts.packages = with pkgs; [
-     nerd-fonts.adwaita-mono
+    nerd-fonts.adwaita-mono
   ];
 }
