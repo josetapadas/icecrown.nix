@@ -269,6 +269,10 @@
     hl.bind(mainMod .. " + L", hl.dsp.exec_cmd("noctalia msg session lock"))
     hl.bind(mainMod .. " + TAB", hl.dsp.exec_cmd("noctalia msg window-switcher"))
 
+    hl.bind(mainMod .. " + SHIFT + S", hl.dsp.exec_cmd("noctalia msg screenshot-region"))
+    hl.bind(mainMod .. " + CTRL + SHIFT + S", hl.dsp.exec_cmd("noctalia msg screenshot-fullscreen"))
+    hl.bind(mainMod .. " + SHIFT + A", hl.dsp.exec_cmd("noctalia msg screenshot-annotate"))
+
     hl.bind(mainMod .. " + C", hl.dsp.window.close())
     hl.bind(mainMod .. " + F", hl.dsp.window.fullscreen())
     hl.bind(mainMod .. " + M", hl.dsp.exit())
