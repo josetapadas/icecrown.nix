@@ -69,6 +69,8 @@
       enable = true;
 
       servers.nixd.enable = true;
+      servers.basedpyright.enable = true;
+      servers.ruff.enable = true;
 
       keymaps = {
         silent = true;
@@ -115,6 +117,16 @@
         options = {
           silent = true;
           desc = "Abrir ou fechar explorador";
+        };
+      }
+      {
+        mode = "n";
+        key = ",?";
+        action = "<cmd>WhichKey<CR>";
+
+        options = {
+          silent = true;
+          desc = "Mostrar todos os keymaps";
         };
       }
     ];
