@@ -12,6 +12,26 @@
 
   programs.home-manager.enable = true;
 
+  programs.bash = {
+    enable = true;
+
+    initExtra = ''
+      __git_prompt() {
+        local ref
+        ref=$(git symbolic-ref --quiet --short HEAD 2>/dev/null) || ref=$(git rev-parse --short HEAD 2>/dev/null) || return
+        local dirty=""
+        [ -n "$(git status --porcelain 2>/dev/null)" ] && dirty="*"
+        printf ' (%s%s)' "$ref" "$dirty"
+      }
+
+      __nix_shell_prompt() {
+        [ -n "''${IN_NIX_SHELL:-}" ] && printf ' [nix-shell]'
+      }
+
+      PS1='\[\e[1;32m\]\u@\h\[\e[0m\]:\[\e[1;34m\]\w\[\e[0m\]\[\e[1;33m\]$(__git_prompt)\[\e[0m\]\[\e[1;36m\]$(__nix_shell_prompt)\[\e[0m\]\$ '
+    '';
+  };
+
   programs.kitty = {
     enable = true;
 
