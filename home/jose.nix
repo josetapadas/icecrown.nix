@@ -108,6 +108,9 @@
     slurp
     libnotify
 
+    # Desktop applications.
+    obsidian
+
     # General development and repository tools.
     git
     gh
