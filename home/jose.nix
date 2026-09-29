@@ -12,6 +12,8 @@
 
   programs.home-manager.enable = true;
 
+  home.file."wordlists".source = "${pkgs.seclists}/share/wordlists/seclists";
+
   programs.bash = {
     enable = true;
 
@@ -126,6 +128,36 @@
     nixfmt-rfc-style
     statix
     deadnix
+
+    # Security / pentesting tools.
+    nmap
+    ligolo-ng
+
+    # Web enumeration and attacks.
+    feroxbuster
+    gobuster
+    ffuf
+    sqlmap
+    nikto
+    wpscan
+    burpsuite
+
+    # Active Directory / Windows.
+    python3Packages.impacket
+    netexec
+    evil-winrm
+    kerbrute
+    responder
+
+    # Password attacks.
+    thc-hydra
+    john
+    hashcat
+
+    # Pivoting and wordlists.
+    chisel
+    proxychains-ng
+    seclists
   ];
 
   home.pointerCursor = {
