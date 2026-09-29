@@ -105,6 +105,7 @@
     extraGroups = [
       "networkmanager"
       "wheel"
+      "libvirtd"
     ];
     packages = with pkgs; [
       #  thunderbird
@@ -121,6 +122,20 @@
     enable = true;
     dockerCompat = true;
   };
+
+  # QEMU/KVM + libvirtd + virt-manager, for running VMs (e.g. Kali).
+  virtualisation.libvirtd = {
+    enable = true;
+
+    qemu = {
+      package = pkgs.qemu_kvm;
+      swtpm.enable = true;
+    };
+  };
+
+  virtualisation.spiceUSBRedirection.enable = true;
+
+  programs.virt-manager.enable = true;
 
   environment.systemPackages = with pkgs; [
     distrobox
