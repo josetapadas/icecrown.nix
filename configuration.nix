@@ -164,7 +164,12 @@
   # services.openssh.enable = true;
 
   # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
+  networking.firewall.allowedTCPPorts = [
+    11601 # ligolo-ng proxy: listener for incoming agent connections
+    8989 # ad-hoc webserver: serving files to targets for download
+    6969 # reverse shell listener
+    445 # SMB shares
+  ];
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
